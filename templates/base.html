@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Search Engine{% endblock %}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f8f9fa;
+            color: #202124;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: #fff;
+            border-bottom: 1px solid #e8eaed;
+            padding: 15px 0;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4285f4;
+            text-decoration: none;
+        }
+
+        .logo:hover {
+            color: #1a73e8;
+        }
+
+        nav a {
+            margin-left: 20px;
+            color: #5f6368;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #202124;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: #4285f4;
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+        }
+
+        .search-button {
+            background: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .search-button:hover {
+            background: #1a73e8;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 20px 0;
+            text-align: center;
+            color: #5f6368;
+            font-size: 14px;
+            border-top: 1px solid #e8eaed;
+            background: #fff;
+        }
+
+        .stats-badge {
+            display: inline-block;
+            background: #e8f0fe;
+            color: #1967d2;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">🔍 Search Engine</a>
+                <nav>
+                    <a href="/">Home</a>
+                    <a href="/stats">Stats</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Educational Search Engine Project | Built with Python, Flask, and TF-IDF</p>
+        {% if stats %}
+        <p style="margin-top: 10px;">
+            <span class="stats-badge">{{ stats.num_documents }} documents</span>
+            <span class="stats-badge">{{ stats.num_terms }} indexed terms</span>
+        </p>
+        {% endif %}
+    </footer>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
