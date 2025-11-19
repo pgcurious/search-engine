@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Search Engine - Home{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hero {
+        text-align: center;
+        padding: 100px 20px 50px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        margin-bottom: 40px;
+        color: #202124;
+    }
+
+    .search-form {
+        margin-bottom: 30px;
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 60px;
+        padding: 40px 20px;
+    }
+
+    .feature-card {
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-card h3 {
+        color: #4285f4;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    .feature-card p {
+        color: #5f6368;
+        font-size: 14px;
+    }
+
+    .icon {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>🔍 Search Engine</h1>
+
+    <form action="/search" method="get" class="search-form">
+        <div class="search-box">
+            <input
+                type="text"
+                name="q"
+                class="search-input"
+                placeholder="Search the web..."
+                autocomplete="off"
+                autofocus
+            >
+        </div>
+        <button type="submit" class="search-button">Search</button>
+    </form>
+</div>
+
+<div class="features">
+    <div class="feature-card">
+        <div class="icon">🕷️</div>
+        <h3>Web Crawling</h3>
+        <p>Automatically discovers and fetches web pages, following links to build a comprehensive index of content.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="icon">📊</div>
+        <h3>Inverted Index</h3>
+        <p>Efficient data structure that maps terms to documents, enabling fast full-text search across millions of pages.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="icon">🎯</div>
+        <h3>TF-IDF Ranking</h3>
+        <p>Sophisticated ranking algorithm that scores documents based on term frequency and inverse document frequency.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="icon">⚡</div>
+        <h3>Fast Search</h3>
+        <p>Returns relevant results in milliseconds using optimized indexing and scoring algorithms.</p>
+    </div>
+</div>
+{% endblock %}

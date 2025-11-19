@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}Index Statistics{% endblock %}
+
+{% block extra_css %}
+<style>
+    .stats-container {
+        background: #fff;
+        padding: 40px;
+        border-radius: 8px;
+        max-width: 800px;
+        margin: 20px auto;
+    }
+
+    .stats-container h1 {
+        color: #202124;
+        margin-bottom: 30px;
+        font-size: 32px;
+    }
+
+    .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .stat-box {
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 8px;
+        text-align: center;
+        border: 2px solid #e8eaed;
+    }
+
+    .stat-value {
+        font-size: 48px;
+        font-weight: bold;
+        color: #4285f4;
+        margin-bottom: 10px;
+    }
+
+    .stat-label {
+        color: #5f6368;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        color: #4285f4;
+        text-decoration: none;
+    }
+
+    .back-link:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="stats-container">
+    <h1>Index Statistics</h1>
+
+    <div class="stat-grid">
+        <div class="stat-box">
+            <div class="stat-value">{{ stats.num_documents }}</div>
+            <div class="stat-label">Documents Indexed</div>
+        </div>
+
+        <div class="stat-box">
+            <div class="stat-value">{{ stats.num_terms }}</div>
+            <div class="stat-label">Unique Terms</div>
+        </div>
+
+        <div class="stat-box">
+            <div class="stat-value">{{ "%.1f"|format(stats.avg_doc_length) }}</div>
+            <div class="stat-label">Avg Document Length</div>
+        </div>
+    </div>
+
+    <a href="/" class="back-link">← Back to Search</a>
+</div>
+{% endblock %}
